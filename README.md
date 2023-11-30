@@ -30,3 +30,23 @@ aisails 是一個專注於處理 ESS (儲能系統) 後端接收資訊的 Node.j
 - 是否有crontab 排程 安裝套件而已
 - middleware  中介層 處理如登入議題
 - jwt-token 處理登入轉換
+
+## 架構規劃
+project/
+|-- routes/
+|   |-- essRoutes.js
+|-- controllers/
+|   |-- essController.js
+|-- services/
+|   |-- essService.js
+|-- models/
+|   |-- essModel.js
+|-- middlewares/
+|   |-- loggerMiddleware.js
+|   |-- authMiddleware.js
+|-- migrations/
+|-- config/
+|   |-- sequelizeConfig.js
+|-- app.js
+|-- package.json
+|-- .gitignore
