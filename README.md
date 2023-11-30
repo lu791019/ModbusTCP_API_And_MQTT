@@ -50,3 +50,18 @@ project/
 |-- app.js
 |-- package.json
 |-- .gitignore
+
+子目錄功能：
+
+- routes/: 存放路由相关的文件，essRoutes.js 可能包含与路由相关的代码。
+- controllers/: 存放控制器相关的文件，essController.js 可能包含与控制器相关的代码。
+- services/: 存放服务相关的文件，essService.js 可能包含服务层的逻辑。
+- models/: 存放模型相关的文件，essModel.js 可能包含数据库模型的定义。
+- middlewares/: 存放中间件相关的文件，loggerMiddleware.js 和 authMiddleware.js 可能包含不同的中间件。
+- migrations/: 存放数据库迁移相关的文件。
+- config/: 存放配置相关的文件，sequelizeConfig.js 可能包含 Sequelize（ORM）的配置。
+- app.js: 应用程序的入口文件。
+- package.json: 项目的包管理文件。
+- .gitignore: Git 版本控制的忽略文件。
+
+
