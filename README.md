@@ -32,6 +32,16 @@ aisails 是一個專注於處理 ESS (儲能系統) 後端接收資訊的 Node.j
 - jwt-token 處理登入轉換
 
 ## 架構規劃
+
+project/
++ -- routes/
+    + -- essRoutes.js
++ -- controllers/
+    + 列表二-1
+    + 列表二-2
+    + 列表二-3
+
+
 project/
 |-- routes/
 |   |-- essRoutes.js
