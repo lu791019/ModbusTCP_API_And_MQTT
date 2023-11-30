@@ -34,32 +34,24 @@ aisails 是一個專注於處理 ESS (儲能系統) 後端接收資訊的 Node.j
 ## 架構規劃
 
 project/
-+ -- routes/
-    + -- essRoutes.js
-+ -- controllers/
-    + 列表二-1
-    + 列表二-2
-    + 列表二-3
++ routes/
+    + essRoutes.js
++ controllers/
+    + essController.js
++ services/
+    + essService.js
++  models/
+    + essModel.js
++ middlewares/
+    + loggerMiddleware.js
+    + authMiddleware.js
++ migrations/
++ config/
+    + sequelizeConfig.js
++ app.js
++ package.json
++ .gitignore
 
-
-project/
-|-- routes/
-|   |-- essRoutes.js
-|-- controllers/
-|   |-- essController.js
-|-- services/
-|   |-- essService.js
-|-- models/
-|   |-- essModel.js
-|-- middlewares/
-|   |-- loggerMiddleware.js
-|   |-- authMiddleware.js
-|-- migrations/
-|-- config/
-|   |-- sequelizeConfig.js
-|-- app.js
-|-- package.json
-|-- .gitignore
 
 子目錄功能：
 
