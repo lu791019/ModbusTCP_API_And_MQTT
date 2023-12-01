@@ -20,7 +20,7 @@ aisails 是一個專注於處理 ESS (儲能系統) 後端接收資訊的 Node.j
 (未來功能) 提供後端 API 集成。
 
 ## 規劃
-後續可能需要依序增加:
+後續依序增加:
 - route   路由器 主要後續這邊找 call 哪支api
 - controller  主要處理相關邏輯
 - logger 增加log 紀錄相關info 
