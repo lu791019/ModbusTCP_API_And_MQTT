@@ -100,7 +100,7 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/ess/ess_cal/ess_status', (req, res) => {
+app.post('/ess_cal/ess_status', (req, res) => {
     try {
         const essStatusData = req.body;
 
@@ -114,7 +114,9 @@ app.post('/ess/ess_cal/ess_status', (req, res) => {
             danfossPCS: processJson(essStatusData.danfossPCS),
             dieselGenerator: processJson(essStatusData.dieselGenerator),
         };
-
+        
+         // 將處理後的 JSON 結果印出到控制台
+        console.log('Result:', result);
         res.json(result);
     } catch (error) {
         console.error('Exception ERROR =>', error);
