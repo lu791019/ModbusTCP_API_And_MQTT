@@ -1,0 +1,110 @@
+{
+    "productName": "智帆彰濱風機",
+    "eticaBMS": {
+        "heartBeat": 255,
+        "stringNumber": 2,
+        "circuitBreakerStatus": 1,
+        "totalVoltage": 732.1,
+        "totalCurrent": 200.2,
+        "soc": 50,
+        "soh": 100,
+        "maxBatteryVoltage": 3.12,
+        "minBatteryVoltage": 3.01,
+        "maxBatteryTemperature": 25,
+        "minBatteryTemprature": 24,
+        "rechargeableCapacity": 372.6,
+        "dischargeableCapacity": 380.2,
+        "allowableMaxDischargePower": 200,
+        "allowableMaxchargePower": 200,
+        "allowableMaxDischargeCurrent": 500.2,
+        "allowableMaxchargeCurrent": 400.7,
+        "operatingTemperature": 25,
+        "systemState": 3,
+        "chargeState": 0,
+        "systemInsulationR": 5000,
+        "alarmList": {
+            "alarmSummary": 0,
+            "systemFaultSummary": 0,
+            "graded": {
+                "system": {
+                    "underVoltage": 0,
+                    "overVoltage": 0,
+                    "overCurrent": 0,
+                    "lowInsulationR": 0
+                },
+                "pack": {
+                    "underVoltage": 0,
+                    "overVoltage": 0
+                },
+                "terminal": {
+                    "lowTemperature": 0,
+                    "overTemperature": 0
+                },
+                "module": {
+                    "lowTemperature": 0,
+                    "overTemperature": 0
+                },
+                "cell": {
+                    "underVoltage": 0,
+                    "overVoltage": 0,
+                    "diffVoltage": 0,
+                    "lowTemperature": 0,
+                    "overTemperature": 0,
+                    "diffTemperature": 0,
+                    "lowSOC": 0,
+                    "highSOC": 0,
+                    "lowSOH": 0,
+                    "highSOH": 0
+                }
+            },
+            "boolean": {
+                "esbcmCommFailed": 0,
+                "esbmmCommFailed": 0,
+                "stringDiffVoltFailed": 0,
+                "contactorDisconnectFailed": 0,
+                "contactorClosingFailed": 0,
+                "chargingProhibited": 0,
+                "dischargingProhibited": 0,
+                "getCellVoltageFailed": 0,
+                "getCellTemperatureFailed": 0
+            }
+        }
+    },
+    "danfossPCS": {
+        "energyCounter": 1000,
+        "dclinkVoltage": 900,
+        "totalCurrent": 200,
+        "lineFrequency": 60,
+        "referenceFrequency": 60,
+        "oprationMode": 3,
+        "fbFixedStatusWord": 0,
+        "lastActiveWarning": 1,
+        "lastActiveFault": 1
+    },
+    "dieselGenerator": {
+        "voltageL3toN": 116,
+        "voltageL2toN": 117,
+        "voltageL1toN": 118,
+        "currentL3": 10,
+        "currentL2": 10,
+        "currentL1": 10,
+        "pfL3": 0.81,
+        "pfL2": 0.82,
+        "pfL1": 0.83,
+        "frequency": 60.1,
+        "apparentPowerL3": 100,
+        "apparentPowerL2": 100,
+        "apparentPowerL1": 100,
+        "activePowerL3": 100,
+        "activePowerL2": 100,
+        "activePowerL1": 100,
+        "reactivePowerL3": 100,
+        "reactivePowerL2": 100,
+        "reactivePowerL1": 100,
+        "speedRPM": 5000,
+        "oilPressure": 30,
+        "coolantTemperature": 80,
+        "batteryVoltage": 24.1,
+        "alarmCode": 0
+    }
+}

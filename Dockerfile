@@ -1,5 +1,5 @@
 # 使用官方 Node.js 20 基礎映像
-FROM node:20
+FROM  node:20.10.0-buster-slim
 
 # 創建並設定工作目錄
 WORKDIR /usr/src/app
