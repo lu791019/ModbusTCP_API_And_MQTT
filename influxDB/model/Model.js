@@ -23,7 +23,12 @@ export default  class Model {
             url: URL,
             token: TOKEN
         });
-        this.writeApi = this.influxDB.getWriteApi(ORG, BUCKET, 'ns');
+        const writeOptions = {
+            batchSize: 5,        // 较小的批量大小
+            flushInterval: 2000  // 较短的刷新间隔（毫秒）
+        };
+
+        this.writeApi = this.influxDB.getWriteApi(ORG, BUCKET, 'ns',writeOptions);
         this.measurement="";
         this.influxDBSchema={
             measurement: "",
