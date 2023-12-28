@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # 定義運行時如何啟動應用程序
-CMD [ "node", "app.js" ]
+CMD [ "npm","run" ,"start" ]
