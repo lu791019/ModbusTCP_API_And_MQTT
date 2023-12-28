@@ -12,7 +12,9 @@
     "esm-module-alias": "^2.1.0",
     "lodash": "^4.17.21",
     "module-alias": "^2.2.3",
+    "mqtt": "^5.3.4",
     "nodemon": "^3.0.1",
+    "package": "^1.0.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
   }
