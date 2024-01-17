@@ -29,6 +29,14 @@ npm start
 
 ```
 
+## DB 使用
+```
+   #  create_table_name 為要建立的資料表名稱
+    yarn migration:generate  create_table_name
+   #  執行資料庫遷移
+    yarn db:migrate
+```
+
 ## 規劃
 後續依序增加:
 - route   路由器 主要後續這邊找 call 哪支api
