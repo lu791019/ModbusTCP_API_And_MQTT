@@ -1,6 +1,7 @@
 import { processJson,flattenObject } from '@/utility/processJson.js'
 import EssInfluxModel from '@/influxDB/model/EssInfluxModel.js';
 
+import essEticaBMSPostgreModel from '@/postgresqlDB/model/essEticaBMSPostgreModel.js';
 
 export default {
     /**
@@ -66,10 +67,12 @@ export default {
             // 將資料寫入到 InfluxDB
             const essInfluxModel = new EssInfluxModel();
             let tmp=await essInfluxModel.save({"productName":essStatusData.productName},flattenObject(essStatusData));
-            console.log("tmp")
-            console.log(tmp)
             essInfluxModel.close()
 
+
+            // 這邊資料寫入到 POSTGRESQL
+            const newEss = await essEticaBMSPostgreModel.create(essStatusData?.eticaBMS);
+            // console.log(newEss)
 
 
             const result = processJson(essStatusData);
@@ -78,7 +81,7 @@ export default {
 
             const { productName, eticaBMS: { soc, totalVoltage, totalCurrent } } = result;
 
-            console.log(`Recieve ESS data: { Name: ${productName}, SOC: ${soc}, totalVoltage: ${totalVoltage}, totalCurrent: ${totalCurrent}  }   ${formattedDate}`);
+            // console.log(`Recieve ESS data: { Name: ${productName}, SOC: ${soc}, totalVoltage: ${totalVoltage}, totalCurrent: ${totalCurrent}  }   ${formattedDate}`);
 
             res.json(result);
         } catch (error) {
