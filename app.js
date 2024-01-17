@@ -1,9 +1,10 @@
-import express from 'express'
+import express from 'express';
 import router from '@/router/router.js';
-import MqttFlowController from "./controller/MqttFlowController.js";
+import MqttFlowController from "@/controller/MqttFlowController.js";
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
+import sequelize from '@/postgresqlDB/databases.js'; // 確保從正確的路徑導入您的 Sequelize 實例
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -45,9 +46,35 @@ mqtt.start();
 
 app.use('/', router)
 
+// // 路由處理
+// import Ess from "@/postgresqlDB/model/essModel.js";
+//
+// import jwt from 'jsonwebtoken';
+// app.get('/tmp', async (req, res) => {
+//     try {
+//
+//         const payload = {
+//             user_id:1,
+//             username: "ETICABATTERY",
+//             place_id:1,
+//             place:"彰濱海岸"
+//         }
+//         const token = jwt.sign(payload, process.env.SECRET_KEY)
+//
+//         res.json(token);
+//     } catch (error) {
+//
+//         res.status(500).send(error.message);
+//     }
+// });
 
 
-// 啟動伺服器
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+
+
+// 在应用程序启动时同步数据库
+sequelize.sync().then(() => {
+    console.log('Database synchronized');
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
 });
