@@ -1,10 +1,8 @@
-
-
 # aisails
 
 ## 項目描述
 
-此專案是一個專注於處理 ESS (儲能系統) 和 Skysails(風機) 後端接收資訊的 Node.js 應用。
+aisails 是一個專注於處理 ESS (儲能系統) 和 Skysails(風機) 後端接收資訊的 Node.js 應用。
 本項目使用 Node.js 16 和 Express 框架，主要負責接收、處理和存儲來自儲能系統的數據。項目的目標是為儲能系統提供穩定、可靠的數據處理能力，並在未來支持更多後端 API 集成。
 
 ## 安裝指南
@@ -22,6 +20,7 @@
 (未來功能) 提供後端 API 集成。
 
 ## 啟動
+
 ```
 cp .env.example .env
 npm install
@@ -30,56 +29,44 @@ npm start
 ```
 
 ## DB 使用
+
 ```
    #  create_table_name 為要建立的資料表名稱
     yarn migration:generate  create_table_name
    #  執行資料庫遷移
-    yarn db:migrate
+    yarn migrate
 ```
 
-## 規劃
-後續依序增加:
-- route   路由器 主要後續這邊找 call 哪支api
-- controller  主要處理相關邏輯
-- logger 增加log 紀錄相關info 
-- sequelize    處理跟db的溝通 用 ORM的套件
-- sequelize 的migration  開DB欄位使用的套件
-- cors 議題  後續有前端需要用到 安裝套件而已
-- 是否有crontab 排程 安裝套件而已
-- middleware  中介層 處理如登入議題
-- jwt-token 處理登入轉換
+## 測試
 
-## 架構規劃
+```bash
+npm run test
+```
 
-project/
-+ routes/
-    + essRoutes.js
-+ controllers/
-    + essController.js
-+ services/
-    + essService.js
-+  models/
-    + essModel.js
-+ middlewares/
-    + loggerMiddleware.js
-    + authMiddleware.js
-+ migrations/
-+ config/
-    + sequelizeConfig.js
-+ app.js
-+ package.json
-+ .gitignore
+因為使用ES6的語法 使用jest 來做測試
+裡面可以看到很多 是因為需要配合 ES6寫法使用
 
+```javascript
+jest.unstable_mockModule('promise-ftp', () => ({...}))
+```
 
-子目錄功能：
+# 特別說明的part
 
-- routes/: 存放路由相关的文件，essRoutes.js 可能包含与路由相关的代码。
-- controllers/: 存放控制器相关的文件，essController.js 可能包含与控制器相关的代码。
-- services/: 存放服务相关的文件，essService.js 可能包含服务层的逻辑。
-- models/: 存放模型相关的文件，essModel.js 可能包含数据库模型的定义。
-- middlewares/: 存放中间件相关的文件，loggerMiddleware.js 和 authMiddleware.js 可能包含不同的中间件。
-- migrations/: 存放数据库迁移相关的文件。
-- config/: 存放配置相关的文件，sequelizeConfig.js 可能包含 Sequelize（ORM）的配置。
-- app.js: 应用程序的入口文件。
-- package.json: 项目的包管理文件。
-- .gitignore: Git 版本控制的忽略文件。
+## Lidar
+
+本案使用的高空風能數據來自,工研院合作的資訊
+資料來源為ftp 連線 下載的資料 有提過使用modbus tcp 串接但是無提供
+下載的資料為ZPH 這是一個二維的資料 是廠商的特規資料
+需要使用廠商提供的exe安裝檔來解析資料 並轉成csv檔案
+目前檔案轉換包成image使用
+請使用 amd64 的機器來執行 沒有包arm 架構的機器
+
+```bash
+docker pull sony791210/wind-zph-csv
+```
+
+## SkysailsController
+
+本案因為訂閱的資料量大,所以使用了MQTT協定來接收資料 每秒約有30筆資料寫入
+因為都是單一筆資料寫入DB id 很快就會弄完 所以特別寫個程式來判斷是否弄完id
+並且定期清理資訊

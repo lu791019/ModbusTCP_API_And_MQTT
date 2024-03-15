@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  aisails-backend:
+    image: aisails-backend:${IMAGE_TAG}
+    ports:
+      - 4000:3000
+    volumes:
+      - /var/www/public:/var/www/public # 增加挂载卷
+      - /var/run/docker.sock:/var/run/docker.sock # 允许容器访问宿主机的 Docker 守护进程
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - docker_server_netsserver
+    privileged: true # 可能需要根据您的需求调整，如果要完全使用DinD，需要开启
+    environment:
+      TZ: Asia/Taipei
+      INFLUXDB_HOST: influxdb
+      INFLUXDB_PORT: 8086
+      INFLUXDB_BUCKET: aisails
+      INFLUXDB_ORG: wistron
+      INFLUXDB_TOKEN: _2vP2-aoqWKPwLa2JCMa43oE_XOaMb_6btv0G3Bg-pu_KJxZnSH40GsbOSjP5rly_Ux5tZZSavGAEubAqSfH5Q==
+      MQTT_HOST: 20.113.148.51
+      MQTT_PORT: 1883
+      MQTT_USERNAME: consumer
+      MQTT_PASSWORD: 88Wb8LoeK1xePsG6E3Vg6aGhGlkolE
+      POSTGGRESQL_HOST: postgres
+      POSTGGRESQL_PORT: 5432
+      POSTGGRESQL_USERNAME: aisails
+      POSTGGRESQL_PASSWORD: ejvi2@WDwd4e12
+      POSTGGRESQL_DATABASE: aisails
+      SECRET_KEY: aisails
+      FTP_HOST: 111.70.13.71
+      FTP_PORT: 36989
+      FTP_USERNAME: ZP300
+      NODE_ENV: prd
+      FILES_DIR: /var/www/public # 注意，这里应该是容器内的路径，而不是宿主机的路径
+      WEATHER_PASSWORD: wPjRMr5U
+      WEATHER_BASE_URL: https://ws.weatherzone.com.au
+      CWB_URL: https://opendata.cwa.gov.tw/api/v1/rest/datastore
+      CWB_KEY: CWB-CD90DE63-ECDB-4D2E-B5CD-19F87D8C12E3
+      WEATHERRISK_URL: https://wistron-api.weatherrisk.com
+networks:
+  docker_server_netsserver:
+    external: true
