@@ -115,8 +115,8 @@ export default {
       // 檢查檔案是否存在
 
       if (!fs.existsSync(localFilePath)) {
-        console.log('File does not exist:', localFilePath);
-        return false; // 檔案不存在，返回 false
+        console.log('File does not exist:', localFilePath)
+        return false // 檔案不存在，返回 false
       }
 
       // 拿取LidarWindPostgreModel 的在reference 的最大值

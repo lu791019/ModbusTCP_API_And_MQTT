@@ -3,6 +3,8 @@ import EssInfluxModel from '@/influxDB/model/EssInfluxModel.js'
 
 import essEticaBMSPostgreModel from '@/postgresqlDB/model/essEticaBMSPostgreModel.js'
 import danfossPCSPostgreModel from '@/postgresqlDB/model/danfossPCSPostgreModel.js'
+import dieselGenPostgreModel from '@/postgresqlDB/model/dieselGenPostgreModel.js'
+import EticaenvPostgreModel from '@/postgresqlDB/model/EticaenvPostgreModel.js'
 import logger from '@/utility/logger/logger.js'
 export default {
   /**
@@ -73,6 +75,8 @@ export default {
       // 這邊資料寫入到 POSTGRESQL
       const newEss = await essEticaBMSPostgreModel.create(essStatusData?.eticaBMS)
       await danfossPCSPostgreModel.create(essStatusData?.danfossPCS)
+      await dieselGenPostgreModel.create(essStatusData?.dieselGenerator)
+      await EticaenvPostgreModel.create(flattenObject(essStatusData?.eticaEnvCon))
       // console.log(newEss)
 
       const result = processJson(essStatusData)
